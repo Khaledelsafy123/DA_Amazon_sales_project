@@ -38,7 +38,8 @@ The project uses an **Amazon Sales Dataset**.
 
 - **Rows:** 100,000
 - **Original Columns:** 20
-- **Final Columns:** 22 after feature engineering
+- **Final Columns:** 24 after feature engineering
+- **Added Features:** `Year`, `CustomerKey`, `BrandTotalAmount`, `OrderShippingCost`
 - **Time Period:** 2020–2024
 
 ### Important Features
@@ -65,8 +66,10 @@ The project uses an **Amazon Sales Dataset**.
 | `State` | Customer state |
 | `Country` | Customer country |
 | `SellerID` | Seller identifier |
-| `Year` | Extracted order year |
-| `CustomerKey` | Customer-level key created from CustomerID and CustomerName |
+| `Year` | Year extracted from `OrderDate` |
+| `CustomerKey` | Customer-level key created from `CustomerID` and `CustomerName` |
+| `BrandTotalAmount` | Total sales amount associated with each brand |
+| `OrderShippingCost` | Shipping cost associated with each order |
 
 ### Data Quality
 
@@ -75,6 +78,8 @@ The project uses an **Amazon Sales Dataset**.
 - `OrderDate` was converted to datetime.
 - `Year` was extracted from `OrderDate`.
 - `CustomerKey` was created because `CustomerID` was not always sufficient as a unique customer identifier.
+- `BrandTotalAmount` was created to analyze total sales performance by brand.
+- `OrderShippingCost` was created to analyze shipping cost at the order level.
 
 ## Tools & Technologies
 
@@ -82,7 +87,6 @@ The project uses an **Amazon Sales Dataset**.
 - Pandas
 - NumPy
 - Matplotlib
-- Seaborn
 - Jupyter Notebook
 
 ## Project Workflow
@@ -103,50 +107,3 @@ Data Visualization
 Insights
       ↓
 Recommendations
-```
-
-## Key Insights
-
-### Best Performers
-
-- **Best Product:** LED Desk Lamp — **6,344 units** sold.
-- **Best Category:** Electronics — **16,853 orders**.
-- **Best Brand:** CoreTech — approximately **8.57M** in sales.
-- **Best Market:** United States — **70,058 orders**.
-- **Best State:** Texas — **24,896 orders**.
-- **Highest Year:** 2023 — **20,096 orders**.
-
-### Areas to Improve
-
-- **Lowest Product:** Children's Book — **5,619 units**.
-- **Lowest Category:** Clothing — **16,439 orders**.
-- **Lowest Brand:** HomeEase — approximately **8.30M** in sales.
-- **Lowest Market:** Australia — **4,130 orders**.
-- **Customer Behavior:** Most customers made only **1 order**, making customer retention an important opportunity.
-- **Order Value:** Average order value is approximately **918**, while the median is approximately **714**.
-
-## Recommendations
-
-1. **Focus on high-performing products**  
-   Prioritize products with strong demand, especially LED Desk Lamp.
-
-2. **Invest in strong categories and brands**  
-   Maintain strong inventory and marketing for Electronics and CoreTech products.
-
-3. **Focus on key markets**  
-   Prioritize the United States, especially Texas, when allocating marketing and inventory resources.
-
-4. **Improve customer retention**  
-   Use loyalty programs, personalized offers, and follow-up campaigns to encourage one-time customers to purchase again.
-
-5. **Improve weaker areas**  
-   Review lower-performing categories, brands, products, and markets to identify opportunities for better pricing, promotions, or product selection.
-
-6. **Compare seller performance**  
-   Analyze top and low-performing sellers to identify successful products and selling strategies.
-
-## Conclusion
-
-The analysis shows that sales performance varies across products, categories, brands, customers, sellers, and geographic markets.
-
-Electronics, CoreTech, the United States, and Texas are among the strongest areas, while most customers make only one purchase. Maintaining strong-performing areas while improving customer retention and weaker markets can provide opportunities for future growth.
